@@ -13,32 +13,37 @@ import java.io.IOException;
 public class Main extends Application {
 
     private int compteur = 0;
-    private int upgradePtsd = 0;
+    private int upgradePtsd = 0; //C'est tout à fait normal qu'il y ait un "D" en trop
     private int essai = 125;
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Clicker!");
 
+        //Bouton Clicker
         Button bouton = new Button("Clique içi!");
         bouton.setPrefSize(150, 150);
         bouton.setTranslateY(50);
 
+        //Création des Labels
         Label nbPoints = new Label("Points : ");
         Label points = new Label("0");
         Label upTexte1 = new Label(125 + " pts");
+
+        //Modif des Labels
         upTexte1.setTranslateX(360);
         upTexte1.setTranslateY(25);
         points.setTranslateX(50);
 
+        //Création des upgrades et modifications
         Button upgrade1 = new Button("Plus de points en cliquant");
         upgrade1.setTranslateY(20);
         upgrade1.setTranslateX(200);
 
+        //setOnAction
         bouton.setOnAction((event) -> {
             compteur();
             points.setText(Integer.toString(compteur));
         });
-
         upgrade1.setOnAction((actionEvent) -> {
             if (compteur >= essai) {
                 upgradePtsd++;
@@ -48,9 +53,8 @@ public class Main extends Application {
             }
         });
 
-
+        //Scene
         Group root = new Group(bouton, nbPoints, points, upgrade1, upTexte1);
-
         stage.setScene(new Scene(root));
         stage.show();
     }
